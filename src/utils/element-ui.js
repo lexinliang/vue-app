@@ -1,16 +1,17 @@
 /*
  * @Author: your name
  * @Date: 2020-06-09 16:14:56
- * @LastEditTime: 2020-06-09 16:16:22
+ * @LastEditTime: 2020-06-10 14:09:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /my-vueapp/src/utils/element-ui.ts
  */
 import Vue from "vue"
-import { Pagination, Dialog, Autocomplete, Dropdown, DropdownMenu, DropdownItem, Menu, Submenu, MenuItem, MenuItemGroup, Input, InputNumber, Radio, RadioGroup, RadioButton, Checkbox, CheckboxButton, CheckboxGroup, Switch, Select, Option, OptionGroup, Button, ButtonGroup, Table, TableColumn, DatePicker, TimeSelect, TimePicker, Popover, Tooltip, Breadcrumb, BreadcrumbItem, Form, FormItem, Tabs, TabPane, Tag, Tree, Alert, Slider, Icon, Row, Col, Upload, Progress, Badge, Card, Rate, Steps, Step, Carousel, CarouselItem, Collapse, CollapseItem, Cascader, ColorPicker, Transfer, Container, Header, Aside, Main, Footer, Timeline, TimelineItem, Link, Divider, Image, Calendar, Backtop, PageHeader, Loading, MessageBox, Message, Notification } from "element-ui"
+import { Pagination, Dialog, avatar, Autocomplete, Dropdown, DropdownMenu, DropdownItem, Menu, Submenu, MenuItem, MenuItemGroup, Input, InputNumber, Radio, RadioGroup, RadioButton, Checkbox, CheckboxButton, CheckboxGroup, Switch, Select, Option, OptionGroup, Button, ButtonGroup, Table, TableColumn, DatePicker, TimeSelect, TimePicker, Popover, Tooltip, Breadcrumb, BreadcrumbItem, Form, FormItem, Tabs, TabPane, Tag, Tree, Alert, Slider, Icon, Row, Col, Upload, Progress, Badge, Card, Rate, Steps, Step, Carousel, CarouselItem, Collapse, CollapseItem, Cascader, ColorPicker, Transfer, Container, Header, Aside, Main, Footer, Timeline, TimelineItem, Link, Divider, Image, Calendar, Backtop, PageHeader, Loading, MessageBox, Message, Notification } from "element-ui"
 
 Vue.use(Pagination)
 Vue.use(Dialog)
+Vue.use(avatar)
 Vue.use(Autocomplete)
 Vue.use(Dropdown)
 Vue.use(DropdownMenu)
