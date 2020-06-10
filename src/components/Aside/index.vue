@@ -7,12 +7,12 @@
  * @FilePath: /my-vueapp/src/components/Aside/index.vue
 -->
 <template>
-  <el-menu :collapse="!show" :style="{ width: show ? '200px' : '60px' }" default-active="1" class="el-menu" background-color="#002966" text-color="#A6B4C9" active-text-color="#FFFFFF" router="router" @select="handleSelect">
-    <el-menu-item index="/">
+  <el-menu :collapse="!show" :style="{ width: show ? '200px' : '60px' }" default-active="0" class="el-menu" background-color="#002966" text-color="#A6B4C9" active-text-color="#FFFFFF" router="router" @select="handleSelect">
+    <el-menu-item index="/" @click="menuclick('/','home')">
       <i class="el-icon-location"></i>
       <span slot="title">{{ $t("home") }}</span>
     </el-menu-item>
-    <el-menu-item index="/mainproducts">
+    <el-menu-item index="/mainproducts"  @click="menuclick('/mainproducts','mainproducts')">
       <i class="el-icon-menu"></i>
       <span slot="title">{{ $t("mainproducts") }}</span>
     </el-menu-item>
@@ -52,13 +52,19 @@ export default {
     handleSelect() {
       this.$emit("toggleMenu", false)
     },
+    menuclick(url,name){
+       this.$emit("menuclick", {url,name})
+    }
   },
 }
 </script>
 
 <style lang="scss" scoped>
 .el-menu {
-  height: 100%;
+  height: 100% ;
   border: none;
+}
+.el-menu-item.is-active{
+  color: #409EFF !important;
 }
 </style>

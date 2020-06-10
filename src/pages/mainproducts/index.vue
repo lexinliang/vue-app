@@ -8,26 +8,20 @@
 -->
 <template>
   <div>
-    <el-button @click="add">add </el-button>
+    <el-button @click="add">reduce </el-button>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex"
 export default {
-  name: "home",
+  name: "mainproducts",
   props: {
     msg: String,
   },
   computed: {
-    ...mapState({
-      n: (state) => state.home.n,
-    }),
   },
   methods: {
     add() {
-      console.log(1)
-      this.$store.commit("add", n + 1)
     },
   },
 }
