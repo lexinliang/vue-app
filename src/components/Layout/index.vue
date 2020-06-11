@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-09 16:28:09
- * @LastEditTime: 2020-06-10 15:52:50
+ * @LastEditTime: 2020-06-11 09:54:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /my-vueapp/src/components/Layout/index.vue
@@ -19,13 +19,7 @@
           <i class="el-icon-s-unfold" v-else @click="hanleToggShow(true)"></i>
         </div>
         <div style="flex:1"></div>
-        <el-tooltip
-          style="margin-right:15px"
-          class="item"
-          effect="dark"
-          content="全屏"
-          placement="top"
-        >
+        <el-tooltip style="margin-right:15px" class="item" effect="dark" content="全屏" placement="top">
           <i class="el-icon-full-screen" @click="screenfull"></i>
         </el-tooltip>
         <div class="dropdown">
@@ -35,16 +29,8 @@
               <i class="el-icon-caret-bottom el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item
-                class="clearfix"
-                @click.native="toggleLang('zh')"
-                :disabled="$i18n.locale == 'zh'"
-              >中文</el-dropdown-item>
-              <el-dropdown-item
-                class="clearfix"
-                @click.native="toggleLang('en')"
-                :disabled="$i18n.locale == 'en'"
-              >英文</el-dropdown-item>
+              <el-dropdown-item class="clearfix" @click.native="toggleLang('zh')" :disabled="$i18n.locale == 'zh'">中文</el-dropdown-item>
+              <el-dropdown-item class="clearfix" @click.native="toggleLang('en')" :disabled="$i18n.locale == 'en'">英文</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
           <el-popover placement="top-start" trigger="hover">
@@ -52,11 +38,7 @@
               <p>消息中心</p>
               <p>退出登录</p>
             </div>
-            <el-avatar
-              class="avatar"
-              slot="reference"
-              src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-            ></el-avatar>
+            <el-avatar class="avatar" slot="reference" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
           </el-popover>
         </div>
       </el-header>
@@ -65,14 +47,7 @@
         <el-container>
           <div class="tag">
             <i class="el-icon-d-arrow-left"></i>
-            <el-tag
-              class="tagone"
-              v-for="(tag,index) in tags"
-              :key="index"
-              closable
-              @click="tagclick(tag)"
-              @close="handleClose(tag)"
-            >{{tag.name}}</el-tag>
+            <el-tag class="tagone" v-for="(tag, index) in tags" :key="index" closable @click="tagclick(tag)" @close="handleClose(tag)">{{ $t(tag.name) }}</el-tag>
             <i class="el-icon-d-arrow-right"></i>
           </div>
           <el-main>
@@ -86,35 +61,42 @@
 </template>
 
 <script>
-import screenfull from "screenfull";
+import screenfull from "screenfull"
 export default {
   data() {
     return {
       show: true,
       //默认不全屏
       isFullscreen: false,
-      tags: [{ name: "home", url: "/" }]
-    };
+      tags: [{ name: "home", url: "/" }],
+    }
   },
   components: {
-    Aside: () => import("../Aside/index.vue")
+    Aside: () => import("../Aside/index.vue"),
   },
   methods: {
-    // handleClose(tag) {},
-    // tagclick(tag) {},
+    handleClose(tag) {
+      let arr = this.tags.filter((item) => {
+        return item.name !== tag.name
+      })
+      this.tags = arr
+    },
+    tagclick(tag) {
+      this.$router.push(tag.url)
+    },
     menuclick(res) {
-    let flag = true;
-      this.tags.map(item=>{
-        if(item.name===res.name){
-         flag =false
+      let flag = true
+      this.tags.map((item) => {
+        if (item.name === res.name) {
+          flag = false
         }
       })
-      if(flag){
+      if (flag) {
         this.tags.push(res)
       }
     },
     hanleToggShow(show) {
-      this.show = show;
+      this.show = show
     },
     /**
      * 全屏事件
@@ -123,18 +105,18 @@ export default {
       if (!screenfull.isEnabled) {
         this.$message({
           message: "Your browser does not work",
-          type: "warning"
-        });
-        return false;
+          type: "warning",
+        })
+        return false
       }
-      screenfull.toggle();
-      this.isFullscreen = true;
+      screenfull.toggle()
+      this.isFullscreen = true
     },
     toggleLang(lang) {
-      this.$i18n.locale = lang;
-    }
-  }
-};
+      this.$i18n.locale = lang
+    },
+  },
+}
 </script>
 <style lang="scss" scoped>
 #layout {
@@ -200,6 +182,7 @@ export default {
     }
     .tagone {
       margin: 0 10px;
+      cursor: pointer;
     }
   }
 }
